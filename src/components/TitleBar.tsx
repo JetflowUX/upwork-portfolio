@@ -1,6 +1,10 @@
-import React from 'react';
-import { Search, LayoutPanelLeft, Minus, Square, X, Menu } from 'lucide-react';
-export function TitleBar({ onToggleSidebar }: { onToggleSidebar?: () => void; }) {
+// React default import not required with the automatic JSX runtime
+import { Search, LayoutPanelLeft, Menu } from "lucide-react";
+export function TitleBar({
+  onToggleSidebar,
+}: {
+  onToggleSidebar?: () => void;
+}) {
   return (
     <div className="h-10 bg-ide-titlebar flex items-center justify-between px-4 border-b border-ide-border select-none shrink-0">
       {/* Left: macOS buttons & Menu */}
@@ -11,7 +15,10 @@ export function TitleBar({ onToggleSidebar }: { onToggleSidebar?: () => void; })
           <div className="w-3 h-3 rounded-full bg-[#28c840] border border-[#1aab29]"></div>
         </div>
 
-        <button onClick={onToggleSidebar} className="md:hidden p-1 rounded hover:bg-ide-highlight">
+        <button
+          onClick={onToggleSidebar}
+          className="md:hidden p-1 rounded hover:bg-ide-highlight"
+        >
           <Menu size={16} />
         </button>
 
@@ -40,12 +47,13 @@ export function TitleBar({ onToggleSidebar }: { onToggleSidebar?: () => void; })
         <div className="hidden lg:flex items-center gap-2">
           <LayoutPanelLeft
             size={16}
-            className="hover:text-ide-text cursor-pointer" />
-          
-          <div size={16} className="hover:text-ide-text cursor-pointer" />
-          <div size={16} className="hover:text-ide-text cursor-pointer" />
+            className="hover:text-ide-text cursor-pointer"
+          />
+
+          <div className="w-4 h-4 hover:text-ide-text cursor-pointer" />
+          <div className="w-4 h-4 hover:text-ide-text cursor-pointer" />
         </div>
       </div>
-    </div>);
-
+    </div>
+  );
 }

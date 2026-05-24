@@ -14,6 +14,8 @@
     font-family: 'JetBrains Mono', monospace;
   }
 }
+/* Smooth scrolling for in-page navigation */
+html { scroll-behavior: smooth; }
 @layer utilities {
   .font-display {
     font-family: 'Outfit', sans-serif;

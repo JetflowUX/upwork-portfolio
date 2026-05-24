@@ -1,4 +1,4 @@
-import React from 'react';
+import type { FC, ReactNode } from 'react';
 import {
   FileCode2,
   X,
@@ -43,6 +43,7 @@ export function Editor() {
       {/* Editor Content */}
       <div className="flex-1 overflow-y-auto p-6 md:p-12 pb-24">
         <div className="max-w-4xl mx-auto">
+          <div id="home" className="scroll-mt-20">
           {/* Comment */}
           <div className="text-ide-comment text-sm md:text-base mb-8">
             // hello world !! Welcome to my portfolio
@@ -76,15 +77,15 @@ export function Editor() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-16">
-            <button className="bg-ide-blue hover:bg-blue-600 text-white px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
+            <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="bg-ide-blue hover:bg-blue-600 text-white px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
               <Code2 size={16} />
               Projects
             </button>
-            <button className="border border-ide-border hover:bg-ide-highlight text-ide-text px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
+            <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="border border-ide-border hover:bg-ide-highlight text-ide-text px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
               <Terminal size={16} />
               About Me
             </button>
-            <button className="border border-ide-border hover:bg-ide-highlight text-ide-text px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
+            <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' })} className="border border-ide-border hover:bg-ide-highlight text-ide-text px-6 py-2 rounded flex items-center gap-2 text-sm transition-colors">
               <Mail size={16} />
               Contact
             </button>
@@ -119,19 +120,56 @@ export function Editor() {
             
           </div>
         </div>
-      </div>
-    </div>);
 
-}
-function Tag({ color, text }: {color: string;text: string;}) {
+        {/* Other sections */}
+        <div className="max-w-4xl mx-auto">
+          <section id="about" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">About</h2>
+            <p className="text-ide-text mb-6">A short bio about John Doe, background, and interests. This section can be expanded with experience details, education, and key achievements.</p>
+          </section>
+
+          <section id="projects" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">Projects</h2>
+            <p className="text-ide-text mb-6">Featured projects listing with short descriptions, tech stack, and links.</p>
+          </section>
+
+          <section id="skills" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">Skills</h2>
+            <p className="text-ide-text mb-6">Technical skills, languages, frameworks, and tools.</p>
+          </section>
+
+          <section id="experience" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">Experience</h2>
+            <p className="text-ide-text mb-6">Work history and notable roles.</p>
+          </section>
+
+          <section id="contact" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">Contact</h2>
+            <p className="text-ide-text mb-6">Ways to get in touch: email, social links, and a contact form placeholder.</p>
+          </section>
+
+          <section id="resume" className="scroll-mt-20 py-12">
+            <h2 className="text-2xl font-display font-bold mb-4">Resume</h2>
+            <p className="text-ide-text mb-6">Downloadable resume and highlights.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>);
+
+};
+
+type TagProps = { color: string; text: string };
+const Tag: FC<TagProps> = ({ color, text }) => {
   return (
     <div className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-ide-border bg-ide-highlight/30 text-xs text-ide-text">
-      <div className={`w-2 h-2 rounded-full ${color}`}></div>
+      <div className={"w-2 h-2 rounded-full " + color}></div>
       {text}
     </div>);
 
-}
-function Stat({ value, label }: {value: string;label: string;}) {
+};
+type StatProps = { value: string; label: string };
+const Stat: FC<StatProps> = ({ value, label }) => {
   return (
     <div className="flex flex-col items-center justify-center text-center">
       <div className="font-display text-2xl md:text-3xl font-bold text-white mb-1">
@@ -141,11 +179,12 @@ function Stat({ value, label }: {value: string;label: string;}) {
     </div>);
 
 }
-function SocialLink({ icon, text }: {icon: React.ReactNode;text: string;}) {
+type SocialLinkProps = { icon: ReactNode; text: string };
+const SocialLink: FC<SocialLinkProps> = ({ icon, text }) => {
   return (
     <button className="flex items-center gap-2 px-3 py-1.5 rounded border border-ide-border hover:bg-ide-highlight text-xs text-ide-muted hover:text-ide-text transition-colors">
       {icon}
       {text}
     </button>);
 
-}
+};

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { TitleBar } from './TitleBar';
-import { ActivityBar } from './ActivityBar';
-import { Sidebar } from './Sidebar';
-import { Editor } from './Editor';
-import { StatusBar } from './StatusBar';
+import { useState } from "react";
+import { TitleBar } from "./TitleBar";
+import { ActivityBar } from "./ActivityBar";
+import { Sidebar } from "./Sidebar";
+import { Editor } from "./Editor";
+import { StatusBar } from "./StatusBar";
 export function IDEWindow() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
@@ -12,14 +12,22 @@ export function IDEWindow() {
       <TitleBar onToggleSidebar={() => setMobileSidebarOpen((s) => !s)} />
 
       {/* Mobile overlay when sidebar is open */}
-      {mobileSidebarOpen && <div onClick={() => setMobileSidebarOpen(false)} className="md:hidden fixed inset-0 z-40 bg-black/40" />}
+      {mobileSidebarOpen && (
+        <div
+          onClick={() => setMobileSidebarOpen(false)}
+          className="md:hidden fixed inset-0 z-40 bg-black/40"
+        />
+      )}
 
       <div className="flex-1 flex overflow-hidden">
         <ActivityBar />
-        <Sidebar mobileOpen={mobileSidebarOpen} onClose={() => setMobileSidebarOpen(false)} />
+        <Sidebar
+          mobileOpen={mobileSidebarOpen}
+          onClose={() => setMobileSidebarOpen(false)}
+        />
         <Editor />
       </div>
       <StatusBar />
-    </div>);
-
+    </div>
+  );
 }

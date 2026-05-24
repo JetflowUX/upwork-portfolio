@@ -1,12 +1,12 @@
-import React from 'react';
+// React import not required with the new JSX transform
 import {
   Files,
   Search,
   GitMerge,
   Blocks,
   Settings,
-  CircleUser } from
-'lucide-react';
+  CircleUser,
+} from "lucide-react";
 export function ActivityBar() {
   return (
     <div className="hidden sm:flex w-12 bg-ide-activity flex flex-col items-center py-4 border-r border-ide-border shrink-0 justify-between">
@@ -18,32 +18,35 @@ export function ActivityBar() {
         <Search
           size={24}
           className="text-ide-muted hover:text-ide-text cursor-pointer transition-colors"
-          strokeWidth={1.5} />
-        
+          strokeWidth={1.5}
+        />
+
         <GitMerge
           size={24}
           className="text-ide-muted hover:text-ide-text cursor-pointer transition-colors"
-          strokeWidth={1.5} />
-        
+          strokeWidth={1.5}
+        />
+
         <Blocks
           size={24}
           className="text-ide-muted hover:text-ide-text cursor-pointer transition-colors"
-          strokeWidth={1.5} />
-        
+          strokeWidth={1.5}
+        />
       </div>
 
       <div className="flex flex-col gap-6">
         <CircleUser
           size={24}
           className="text-ide-muted hover:text-ide-text cursor-pointer transition-colors"
-          strokeWidth={1.5} />
-        
+          strokeWidth={1.5}
+        />
+
         <Settings
           size={24}
           className="text-ide-muted hover:text-ide-text cursor-pointer transition-colors"
-          strokeWidth={1.5} />
-        
+          strokeWidth={1.5}
+        />
       </div>
-    </div>);
-
+    </div>
+  );
 }
